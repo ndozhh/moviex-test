@@ -4,6 +4,8 @@ import {
   Outlet,
   Link,
 } from "react-router-dom";
+import { Movies } from "./routes/movies/route";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -11,12 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/movies",
-        element: (
-          <div>
-            Movies route
-            <Outlet />
-          </div>
-        ),
+        element: <Movies />,
         children: [
           {
             path: ":movieId",
