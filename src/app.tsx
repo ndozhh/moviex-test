@@ -4,26 +4,37 @@ import {
   Outlet,
   Link,
 } from "react-router-dom";
+import Index from "./pages/index";
+import Detail from "./pages/detail";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet />,
+    element: (
+      <>
+        <Link to="/movies">Movies</Link>
+        <Outlet />
+      </>
+    ),
     children: [
       {
-        path: "/movies",
+        path: "movies",
         element: (
           <div>
-            Movies route
             <Outlet />
           </div>
         ),
         children: [
           {
+            index: true,
+            element: <Index />,
+          },
+          {
             path: ":movieId",
             element: (
               <div>
-                <div>Movie detail route</div>
-                <Link to="/movies">Back to movies</Link>
+                <Detail />
+                <Outlet />
               </div>
             ),
           },
